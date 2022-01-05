@@ -1,11 +1,65 @@
 <html>
 <head> 
  
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
  <link rel = "icon" href = 
 "https://media.discordapp.net/attachments/856935997787209738/916855089208098876/95bc1261f2630386a6ec17460f3725c6022b28ba_hq.png?width=432&height=432" 
         type = "image/x-icon">
 
  <style>
+
+/* Tabs */
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: white;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: gray;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: teal;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+    -webkit-animation: fadeEffect 3s;
+  animation: fadeEffect 3s;
+}
+
+/* Fade in tabs */
+@-webkit-keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
 
   a:link {
   color: blue;
@@ -49,12 +103,45 @@ a:active {
  
  <h1>Welcome To My Watchlist/Library</h1>
 
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'Watchlist')" id="defaultOpen">Watchlist</button>
+  <button class="tablinks" onclick="openCity(event, 'Watched')">Watched</button>
+  <button class="tablinks" onclick="openCity(event, 'Watching')">Watching</button>
+</div>
+
+<div id="Watchlist" class="tabcontent">
+  <a href="https://www.bilibili.tv/en/play/1019824"><img src="https://media.discordapp.net/attachments/856935997787209738/928332555529363466/ogp.png" alt="Shikizakura Title"></a>
+<br>
+</div>
+
+<div id="Watched" class="tabcontent">
  <a href="https://www.bilibili.tv/en/play/1019175"><img src="https://media.discordapp.net/attachments/856935997787209738/918882838957412392/banished-from-the-heros-party-i-decided-to-live-a-quiet-life-in-the-countryside.jpg" alt="Banished From The Hero's Party Title"></a>
 <br>
+</div>
+
+<div id="Watching" class="tabcontent">
  <a href="https://vrv.co/series/GRMG8ZQZR/One-Piece"><img src="https://2.bp.blogspot.com/_AcBUSVxs82w/TQBLWOQoUaI/AAAAAAAAjsI/Unym3cOAZv0/s1600/One-Piece-Title.jpg" alt="One Piece Title"></a>
 <br>
-<a href="https://www.bilibili.tv/en/play/1019824"><img src="https://media.discordapp.net/attachments/856935997787209738/928332555529363466/ogp.png" alt="Shikizakura Title"></a>
+</div>
 
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
  
  </body>
 </html>
